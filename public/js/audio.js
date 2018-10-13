@@ -1,9 +1,13 @@
+var curIdx = -1;
+var numberOfFiles = 5;
+
 var playButton = document.getElementById("playButton");
 var audio = document.getElementById("audioSrc");
 var isPlaying = false;
 
-var audioSrcs = ["1.wav", "2.wav", "3.wav", "4.wav", "5.wav"]
-var curIdx = -1;
+var firstStanza = document.getElementById("firstStanza");
+var secondStanza = document.getElementById("secondStanza");
+var thirdStanza = document.getElementById("thirdStanza");
 
 // start with audio playing, but muted, because we want continuous playback
 audio.src = getNextAudioSrc();
@@ -15,13 +19,13 @@ playButton.addEventListener("click", function() {
 	{
 		audio.muted = true;
 		isPlaying = false;
-		playButton.className = "fas fa-volume-up";
+		playButton.className = "fas fa-volume-off";
 	}
 	else
 	{
 		audio.muted = false;
 		isPlaying = true;
-		playButton.className = "fas fa-volume-off";
+		playButton.className = "fas fa-volume-up";
 	}
 });
 
@@ -31,6 +35,38 @@ audio.onended = function() {
 }
 
 function getNextAudioSrc() {
-	curIdx = (curIdx + 1) % audioSrcs.length;
-	return "audio/" + audioSrcs[curIdx];
+	curIdx = (curIdx + 1) % numberOfFiles;
+	scrollText()
+	return "data/audio/" + curIdx + ".wav";
+}
+
+function scrollText() {
+	var firstIndex = (curIdx-1) % numberOfFiles;
+	var secondIndex = curIdx;
+	var thirdIndex = (curIdx+1) % numberOfFiles;
+	if (secondIndex == 0) {
+		firstIndex = numberOfFiles-1
+	}
+	firstStanza.innerHTML = readTextFile("data/text/"+firstIndex+".txt");
+	secondStanza.innerHTML = readTextFile("data/text/"+secondIndex+".txt");
+	thirdStanza.innerHTML = readTextFile("data/text/"+thirdIndex+".txt");
+}
+
+function readTextFile(file)
+{
+	var rawFile = new XMLHttpRequest();
+	text = ""
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                text = rawFile.responseText;
+            }
+        }
+    }
+	rawFile.send(null);
+	return text
 }
