@@ -31,20 +31,20 @@
                     <strong class="blue-text">Flow</strong>
                 </a>
 
-                <!-- Left -->
+                <!-- Audio -->
                 <ul class="navbar-nav nav-flex-icons mr-auto navbar-left">
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" target="_blank">
-                            {{!-- <i class="fas fa-play" style="font-size:40px;"></i> --}}
-                            <i class="fas fa-play" style="font-size:40px;"></i>
+                        <a class="nav-link" target="_blank">
+                            <i class="fas fa-volume-up" style="font-size:40px;" id="playButton" ></i>
                         </a>
+								<audio autoplay id="audioSrc" type="audio/wav" preload="auto"></audio>
                     </li>
                 </ul>
 
-                <!-- Right -->
+                <!-- Add submission -->
                 <ul class="navbar-nav nav-flex-icons navbar-right">
                     <li class="nav-item">
-                        <a class="nav-link waves-effect" target="_blank">
+                        <a class="nav-link" target="_blank">
                             <i class="fas fa-plus" style="font-size:40px;"></i>
                         </a>
                     </li>
@@ -189,7 +189,7 @@
 
         <!--Copyright-->
         <div class="footer-copyright py-3">
-            © 2018 Copyright: Nagare
+            Created By: Nagare
         </div>
         <!--/.Copyright-->
 
@@ -210,6 +210,8 @@
         // Animations initialization
         new WOW().init();
     </script>
+	 <!-- Audio -->
+	 <script type="text/javascript" src="js/audio.js"></script>
 </body>
 
 </html>
