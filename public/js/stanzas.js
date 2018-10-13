@@ -7,4 +7,8 @@ var stanzas = [
     "3"
 ]
 
+function scrollText() {
+    console.log("Scrolling Text");
+}
 
+module.exports = scrollText
