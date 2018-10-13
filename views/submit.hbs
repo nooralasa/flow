@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Flow</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container nav">
+
+                <!-- Brand -->
+                <a class="navbar-brand waves-effect" href="/">
+                    <strong class="blue-text">Flow</strong>
+                </a>
+
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="mt-5 pt-5">
+        <div class="container">
+		  <h2 class="card-title"><b>Submit Your Poetry</b></h2>
+		  <br>
+		  
+		  <form>
+			  <div class="form-group">
+				 <label for="audioFile">Recitation</label>
+				 <input type="file" class="form-control-file" id="audioFile" aria-describedby="fileHelp">
+				 <small id="fileHelp" class="form-text text-muted">Upload an audio file</small>
+			  </div>
+			  <div class="form-group">
+				 <label for="originalText">Text</label>
+				 <textarea class="form-control" id="originalText" rows="6"></textarea>
+			  </div>
+			  <button class="btn btn-danger" style="padding-top:4px;padding-bottom:2px;padding-left:6px;padding-right:6px">Auto-translate</button>
+			  <div class="form-group">
+				 <label for="translatedText">English translation</label>
+				 <textarea class="form-control" id="translatedText" rows="6"></textarea>
+			  </div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		  
+        </div>
+    </main>
+    <!--Main layout-->
+
+    <!--Footer-->
+    <footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
+
+        <!--Call to action-->
+        <div class="pt-4">
+            <a class="btn btn-outline-white" href="#" target="_blank" role="button">Flow VR App
+                <i class="fas fa-external-link-alt ml-2"></i>
+            </a>
+            <a class="btn btn-outline-white" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank" role="button">Share Project
+                <i class="fas fa-share-square ml-2"></i>
+            </a>
+        </div>
+        <!--/.Call to action-->
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            Created By: Nagare
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+</body>
+
+</html>
