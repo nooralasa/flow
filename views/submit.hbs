@@ -43,23 +43,18 @@
         <div class="container">
 		  <h2 class="card-title"><b>Submit Your Poetry</b></h2>
 		  <br>
-		  
-		  <form>
+
+		  <form action="/translate" method="POST">
 			  <div class="form-group">
-				 <label for="audioFile">Recitation</label>
-				 <input type="file" accept="audio/*" class="form-control-file" id="audioFile" aria-describedby="fileHelp">
-				 <small id="fileHelp" class="form-text text-muted">Upload an audio file</small>
+				 <label for="originalText">Stanza</label>
+				 <textarea class="form-control" name="stanza" id="originalText" rows="6"></textarea>
 			  </div>
-			  <div class="form-group">
-				 <label for="originalText">Text</label>
-				 <textarea class="form-control" id="originalText" rows="6"></textarea>
-			  </div>
-			  <button type="button" class="btn btn-danger" style="padding-top:4px;padding-bottom:2px;padding-left:6px;padding-right:6px">Auto-translate</button>
+			  {{!-- <button type="button" class="btn btn-danger" style="padding-top:4px;padding-bottom:2px;padding-left:6px;padding-right:6px">Auto-translate</button>
 			  <div class="form-group">
 				 <label for="translatedText">English translation</label>
-				 <textarea class="form-control" id="translatedText" rows="6"></textarea>
-			  </div>
-			  <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+				 <textarea class="form-control" name="translation" id="translatedText" rows="6"></textarea>
+			  </div> --}}
+			  <button type="submit" class="btn btn-primary" id="submitButton">Next</button>
 			</form>
 		  
         </div>
