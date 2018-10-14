@@ -17,6 +17,10 @@ audio.muted = true;
 
 // mute/unmute audio
 playButton.addEventListener("click", function() {
+	if (audio.paused) {
+		audio.play();
+	}
+
 	if (isPlaying)
 	{
 		audio.muted = true;
