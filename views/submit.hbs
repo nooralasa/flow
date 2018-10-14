@@ -46,14 +46,10 @@
 
 		  <form action="/translate" method="POST">
 			  <div class="form-group">
-				 <label for="originalText">Stanza</label>
-				 <textarea class="form-control" name="stanza" id="originalText" rows="6"></textarea>
+                  <h3>Your Contribuetry</h3>
+				  <label for="originalText">Add your poetry to this ongoing global poem. Please only paste a single stanza at a time.</label>
+				  <textarea class="form-control" name="stanza" id="originalText" rows="6"></textarea>
 			  </div>
-			  {{!-- <button type="button" class="btn btn-danger" style="padding-top:4px;padding-bottom:2px;padding-left:6px;padding-right:6px">Auto-translate</button>
-			  <div class="form-group">
-				 <label for="translatedText">English translation</label>
-				 <textarea class="form-control" name="translation" id="translatedText" rows="6"></textarea>
-			  </div> --}}
 			  <button type="submit" class="btn btn-primary" id="submitButton">Next</button>
 			</form>
 		  
@@ -98,7 +94,6 @@
         // Animations initialization
         new WOW().init();
     </script>
-	 <script type="text/javascript" src="js/submit.js"></script>
 </body>
 
 </html>

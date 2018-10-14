@@ -7,8 +7,16 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var fs = require('fs');
 
+// Google Cloud Translate API
+const {Translate} = require('@google-cloud/translate');
+const projectId = 'flow-1539481669747';
+const translate = new Translate({
+  projectId: projectId,
+});
+
 var indexRouter = require('./routes/index');
 var submitRouter = require('./routes/submit');
+var translateRouter = require('./routes/translate');
 var uploadRouter = require('./routes/upload');
 
 var app = express();
@@ -38,7 +46,7 @@ var multerConfig = {
     filename: function(req, file, next){
       filename = file.fieldname
       fs.readdir('public/data/audio', (err, files) => {
-        filename = files.length-1;
+        filename = files.length;
         console.log(file);
         const ext = file.mimetype.split('/')[1];
         next(null, filename + '.'+ext);
@@ -47,8 +55,13 @@ var multerConfig = {
   })
 };
 
-app.use('/', indexRouter);
+app.get('/', function(req, res, next) {
+  fs.readdir('public/data/text', (err, files) => {
+    res.render('index', {numberOfFiles: files.length});
+  });
+});
 app.use('/submit', submitRouter);
+app.use('/translate', translateRouter);
 app.use('/upload', uploadRouter);
 
 app.post('/translate', function(req,res) {
@@ -56,12 +69,33 @@ app.post('/translate', function(req,res) {
     filename = files.length;
     fs.writeFile('public/data/text/'+filename+'.txt', req.body.stanza, function(err) {
       if (err) throw err;
+
       // Translate
+      translate.translate(req.body.stanza, 'en').then(results => {
+        const translation = results[0];
+
+        console.log(`Text: ${req.body.stanza}`);
+        console.log(`Translation: ${translation}`);
+        var param = encodeURIComponent(translation);
+        res.redirect('/translate?translation='+param);
+      }).catch(err => {
+        console.error('ERROR:', err);
+      });
+
       console.log("Saved!");
     });
   });
-  console.log(req.body);
-  res.redirect('/upload');
+});
+
+app.post('/saveTranslation', function(req,res) {
+  fs.readdir('public/data/translation', (err, files) => {
+    filename = files.length;
+    fs.writeFile('public/data/translation/'+filename+'.txt', req.body.translation, function(err) {
+      if (err) throw err;
+      console.log("Saved!");
+      res.redirect('upload');
+    });
+  });
 });
 
 app.post('/upload', multer(multerConfig).single('audio'), function(req,res) {
