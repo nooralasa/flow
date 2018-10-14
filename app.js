@@ -9,7 +9,7 @@ var fs = require('fs');
 
 // Google Cloud Translate API
 const {Translate} = require('@google-cloud/translate');
-const projectId = 'flow-1539481669747';
+const projectId = 'flow-219404';
 const translate = new Translate({
   projectId: projectId,
 });
